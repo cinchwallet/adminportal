@@ -36,6 +36,11 @@ public abstract class AbstractDao<PK extends Serializable, T> implements Generic
 		getSession().persist(entity);
 	}
 
+	@Override
+	public void saveOrUpdate(T entity) {
+		getSession().saveOrUpdate(entity);
+	}
+	
 	public void delete(T entity) {
 		getSession().delete(entity);
 	}

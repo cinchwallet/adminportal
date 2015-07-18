@@ -8,14 +8,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cinchwallet.adminportal.dao.DataDao;
+import com.cinchwallet.adminportal.dao.UserDao;
 import com.cinchwallet.adminportal.model.Employee;
+import com.cinchwallet.adminportal.model.UserLogin;
 
 @Transactional
 @Service
-public class DataServiceImpl implements DataService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	DataDao dataDao;
+
+	@Autowired
+	UserDao userDao;
 
 	@Override
 	public int save(Employee employee) {
@@ -46,4 +51,9 @@ public class DataServiceImpl implements DataService {
 		return 0;
 	}
 
+	@Override
+	public UserLogin loadUserByUsername(String username) {
+		UserLogin login = userDao.loadUserByUsername(username);
+		return login;
+	}
 }

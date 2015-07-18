@@ -1,4 +1,4 @@
-package com.cinchwallet.adminportal.model;
+package com.cinchwallet.adminportal.security;
 
 public class Privilege {
  

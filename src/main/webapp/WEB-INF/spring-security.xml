@@ -38,7 +38,7 @@
 
  	 <!-- We just actually need to set the default target url here -->
  	<beans:bean id="customAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler"
- 		p:defaultTargetUrl="/form" />
+ 		p:defaultTargetUrl="/home" />
 
  	<!-- The AuthenticationEntryPoint is responsible for redirecting the user to a particular page, like a login page,
  			whenever the server sends back a response requiring authentication -->

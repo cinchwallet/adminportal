@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cinchwallet.adminportal.constant.Constants;
 import com.cinchwallet.adminportal.model.Employee;
-import com.cinchwallet.adminportal.services.DataService;
+import com.cinchwallet.adminportal.services.UserService;
 
 @Controller
-public class DataController {
+public class HomeController {
 	
 	@Autowired
-	DataService dataService;
+	UserService dataService;
 
-	@RequestMapping("form")
-	public ModelAndView getForm(@ModelAttribute Employee employee) {
-		return new ModelAndView("form");
+	@RequestMapping("home")
+	public String getForm(Model model) {
+		return Constants.PAGE_HOME;
 	}
 	
 	@RequestMapping("register")
@@ -42,18 +43,6 @@ public class DataController {
 		return new ModelAndView("redirect:list");
 	}
 	
-	@RequestMapping("edit")
-	public ModelAndView editUser(@RequestParam int id,@ModelAttribute Employee employee) {
-		Employee employeeObject = dataService.getRowById(id);
-		return new ModelAndView("edit","employeeObject",employeeObject);
-	}
-	
-	@RequestMapping("update")
-	public ModelAndView updateUser(@ModelAttribute Employee employee) {
-		dataService.update(employee);
-		return new ModelAndView("redirect:list");
-	}
-
 	
 	@RequestMapping("adminform")
 	public String getAdminForm(Model model) {

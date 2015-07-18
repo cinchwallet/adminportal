@@ -16,7 +16,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager"/> 
 	<mvc:default-servlet-handler/>
 
-
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -32,6 +32,9 @@
 		<property name="annotatedClasses">  
             <list>  
                 <value>com.cinchwallet.adminportal.model.Employee</value>  
+                <value>com.cinchwallet.adminportal.model.UserLogin</value>  
+                <value>com.cinchwallet.adminportal.model.User</value>  
+                <value>com.cinchwallet.adminportal.model.Merchant</value>  
             </list>  
         </property> 
 		<property name="hibernateProperties">
@@ -59,6 +62,26 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+	
+	<bean id="messageSource"
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:label" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+    
+    <bean id="localeResolver"
+        class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="en" />
+        <property name="cookieName" value="myAppLocaleCookie"></property>
+        <property name="cookieMaxAge" value="3600"></property>
+    </bean>
+ 
+    <mvc:interceptors>
+        <bean
+            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="locale" />
+        </bean>
+    </mvc:interceptors>
 	
 
 </beans>
