@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cinchwallet.adminportal.dao.MerchantDao;
+import com.cinchwallet.adminportal.dao.StoreDao;
 import com.cinchwallet.adminportal.model.Merchant;
+import com.cinchwallet.adminportal.model.Store;
 
 @Transactional
 @Service
@@ -16,6 +18,9 @@ public class MerchantServiceImpl implements MerchantService {
 
 	@Autowired
 	MerchantDao merchantDao;
+
+	@Autowired
+	StoreDao storeDao;
 
 	@Override
 	public int save(Merchant merchant) {
@@ -47,7 +52,36 @@ public class MerchantServiceImpl implements MerchantService {
 		return 0;
 	}
 
-	
+	//Store related functions
 
+	@Override
+	public List<Store> getStores(int merchantId) {
+		return merchantDao.getStores(merchantId);
+	}
+
+
+	@Override
+	public int deleteStore(int id) {
+		Store store = storeDao.getByKey(id);
+		storeDao.delete(store);
+		return 0;
+	}
 	
+	@Override
+	public Store getStoreById(int id) {
+		Store store = storeDao.getByKey(id);
+		return store;
+	}
+	
+	@Override
+	public int save(Store store) {
+		storeDao.saveOrUpdate(store);
+		return 0;
+	}
+	
+	@Override
+	public int update(Store store) {
+		storeDao.update(store);
+		return 0;
+	}
 }

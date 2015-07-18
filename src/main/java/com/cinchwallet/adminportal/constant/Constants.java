@@ -11,6 +11,8 @@ public interface Constants {
 
 	//root url
 	String MERCHANT= "merc";
+	String MERCHANT_STORE= "merc/store";
+	String STORE= "store";
 	
 	//common action
 	String ADD = "/add";

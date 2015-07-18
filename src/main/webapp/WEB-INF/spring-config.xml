@@ -35,6 +35,7 @@
                 <value>com.cinchwallet.adminportal.model.UserLogin</value>  
                 <value>com.cinchwallet.adminportal.model.User</value>  
                 <value>com.cinchwallet.adminportal.model.Merchant</value>  
+                <value>com.cinchwallet.adminportal.model.Store</value>  
             </list>  
         </property> 
 		<property name="hibernateProperties">

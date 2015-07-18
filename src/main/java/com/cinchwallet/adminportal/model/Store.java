@@ -30,7 +30,7 @@ public class Store implements Serializable {
 	private String storeId;
 
 	@Column(name = "MERCHANT_ID")
-	private String merchantId;
+	private int merchantId;
 
 	@Column(name = "NAME")
 	private String name;
@@ -189,11 +189,11 @@ public class Store implements Serializable {
 		this.updatedTs = updatedTs;
 	}
 
-	public String getMerchantId() {
+	public int getMerchantId() {
 		return merchantId;
 	}
 
-	public void setMerchantId(String merchantId) {
+	public void setMerchantId(int merchantId) {
 		this.merchantId = merchantId;
 	}
 
