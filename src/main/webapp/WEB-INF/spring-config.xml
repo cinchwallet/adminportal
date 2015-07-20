@@ -31,11 +31,13 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">  
             <list>  
+                <value>com.cinchwallet.adminportal.model.CardProduct</value>  
                 <value>com.cinchwallet.adminportal.model.Employee</value>  
-                <value>com.cinchwallet.adminportal.model.UserLogin</value>  
-                <value>com.cinchwallet.adminportal.model.User</value>  
                 <value>com.cinchwallet.adminportal.model.Merchant</value>  
                 <value>com.cinchwallet.adminportal.model.Store</value>  
+                <value>com.cinchwallet.adminportal.model.TxnType</value>  
+                <value>com.cinchwallet.adminportal.model.User</value>  
+                <value>com.cinchwallet.adminportal.model.UserLogin</value>  
             </list>  
         </property> 
 		<property name="hibernateProperties">

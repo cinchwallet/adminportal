@@ -8,10 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cinchwallet.adminportal.constant.Constants;
-import com.cinchwallet.adminportal.model.Employee;
 import com.cinchwallet.adminportal.model.Merchant;
 import com.cinchwallet.adminportal.model.Store;
 import com.cinchwallet.adminportal.services.MerchantService;
@@ -34,7 +32,7 @@ public class MerchantController {
 	public String addMerchant(Model model) {
 		Merchant merchant = new Merchant();
 		//generate merchantId here
-		merchant.setMerchantId("2347823748");
+		merchant.setMerchantId(merchantService.getNextMerchantId());
 		model.addAttribute("merchant", merchant);
 		return Constants.PAGE_MERCHANT_ADD;
 	}
@@ -64,6 +62,8 @@ public class MerchantController {
 	public String showStores(@PathVariable int id, Model model) {
 		//read merchants store
 		List<Store> storeList = merchantService.getStores(id);
+		Merchant merchant = merchantService.getRowById(id);
+		model.addAttribute("merchant", merchant);
 		model.addAttribute("storeList", storeList);
 		return Constants.PAGE_STORE;
 	}	
@@ -74,7 +74,7 @@ public class MerchantController {
 		Store store = new Store();
 		store.setMerchantId(id);
 		//generate merchantId here
-		store.setStoreId("2347823748");
+		store.setStoreId(merchantService.getNextStoreId());
 		model.addAttribute("store", store);
 		return Constants.PAGE_STORE_ADD;
 	}
@@ -89,14 +89,14 @@ public class MerchantController {
 	@RequestMapping(Constants.STORE + Constants.SAVE)
 	public String saveStore(@ModelAttribute Store store) {
 		merchantService.save(store);
-		return "redirect:/merc"+store.getMerchantId()+"/"+Constants.STORE;
+		return "redirect:/merc/"+store.getMerchantId()+"/"+Constants.STORE;
 	}
 	
 	@RequestMapping(Constants.STORE + Constants.DELETE + "/{id}")
 	public String deleteStore(@PathVariable("id") int id) {
 		Store store = merchantService.getStoreById(id);
 		merchantService.deleteStore(id);
-		return "redirect:/merc"+store.getMerchantId()+"/"+Constants.STORE;
+		return "redirect:/merc/"+store.getMerchantId()+"/"+Constants.STORE;
 	}
 
 }

@@ -16,6 +16,8 @@ public interface MerchantService {
 
 	public int delete(int id);
 	
+	public Long getNextMerchantId();
+	
 	public List<Store> getStores(int merchantId);
 
 	
@@ -27,4 +29,5 @@ public interface MerchantService {
 
 	public int deleteStore(int id);
 
+	public Long getNextStoreId();
 }

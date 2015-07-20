@@ -53,12 +53,24 @@
 		</div>
 		<!-- end nav-right -->
 
+<!-- Url configuration - start -->
+
+<c:url var="dashboard" value="/home" />
+<c:url var="viewMerchant" value="/merc" />
+<c:url var="addMerchant" value="/merc/add" />
+<c:url var="viewCardProduct" value="/crdpdt" />
+<c:url var="addCardProduct" value="/crdpdt/add" />
+<c:url var="transaction" value="/txn" />
+<c:url var="viewUser" value="/usr" />
+<c:url var="addUser" value="/usr/add" />
+
+<!-- Url configuration - end -->
 
 		<!--  start nav -->
 		<div class="nav">
 		<div class="table">
 		
-		<ul class="select"><li><a href="#nogo"><b>Dashboard</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul class="select"><li><a href="${dashboard}"><b>Dashboard</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
@@ -71,12 +83,12 @@
 		
 		<div class="nav-divider">&nbsp;</div>
 		                    
-		<ul class="current"><li><a href="#nogo"><b>Merchant</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul class="select"><li><a href=""><b>Merchant</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub show">
 			<ul class="sub">
-				<li><a href="merc">View Merchants</a></li>
-				<li><a href="merc/add">Add Merchant</a></li>
+				<li><a href="${viewMerchant}">View Merchants</a></li>
+				<li><a href="${addMerchant}">Add Merchant</a></li>
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -85,12 +97,12 @@
 		
 		<div class="nav-divider">&nbsp;</div>
 		
-		<ul class="select"><li><a href="#nogo"><b>Card Product</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul class="select"><li><a href=""><b>Card Product</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
-				<li><a href="#nogo">View Card Products</a></li>
-				<li><a href="#nogo">Add Card Product</a></li>
+				<li><a href="${viewCardProduct}">View Card Products</a></li>
+				<li><a href="${addCardProduct}">Add Card Product</a></li>
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -99,7 +111,7 @@
 		
 		<div class="nav-divider">&nbsp;</div>
 		
-		<ul class="select"><li><a href="#nogo"><b>Transaction</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul class="select"><li><a href="${transaction}"><b>Transaction</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
@@ -117,8 +129,8 @@
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
-				<li><a href="#nogo">View Users</a></li>
-				<li><a href="#nogo">Add User</a></li>
+				<li><a href="${viewUser}">View Users</a></li>
+				<li><a href="${addUser}">Add User</a></li>
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->

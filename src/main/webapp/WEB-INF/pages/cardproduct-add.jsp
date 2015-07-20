@@ -21,7 +21,7 @@
 <div id="content">
 
 
-<div id="page-heading"><h1><spring:message code="merchant.page.heading"/></h1></div>
+<div id="page-heading"><h1><spring:message code="cardproduct.page.heading"/></h1></div>
 
 
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
@@ -45,87 +45,109 @@
 	
 		<!--  start step-holder -->
 		<div id="step-holder">
-			<div class="step-no"></div>
-			<div class="step-dark-left">Create Merchant - need some modification</div>
-			<div class="step-dark-round"></div>
+			<div class="step-no-off">1</div>
+			<div class="step-dark-left">Create New Card Product</div>
+			<div class="step-light-round">&nbsp;</div>
 			<div class="clear"></div>
 		</div>
 		<!--  end step-holder -->
 	
 		<!-- start id-form -->
-		<c:url var="saveUrl" value="/merc/save" />
-		<form:form modelAttribute="merchant" name="form" method="POST" action="${saveUrl}">
+		<c:url var="saveUrl" value="/crdpdt/save" />
+		<form:form modelAttribute="cardProduct" name="form" method="POST" action="${saveUrl}">
 		<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 		
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.id"/></th>
-			<td><form:input path="merchantId" class="inp-form" readonly="readonly"/></td>
+			<th valign="top"><spring:message code="cardproduct.label.name"/></th>
+			<td><form:input path="name" class="inp-form-error" /></td>
 			<td></td>
 			<form:hidden path="uid"/>
 		</tr>
-				
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.name"/></th>
-			<td><form:input path="name" class="inp-form-error" /></td>
-			<td>
-			</td>
-		</tr>
-		<tr>
-			<th valign="top"><spring:message code="merchant.label.description"/></th>
-			<td><form:textarea path="description" rows="" cols="" class="form-textarea"/></td>
+			<th valign="top"><spring:message code="cardproduct.label.upc"/></th>
+			<td><form:input path="upc" class="inp-form-error" /></td>
 			<td></td>
 		</tr>
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.address"/></th>
-			<td><form:input path="address" class="inp-form" /></td>
-			<td>
-			</td>
+			<th valign="top"><spring:message code="cardproduct.label.description"/></th>
+			<td><form:textarea path="description" rows="" cols="" class="form-textarea"/></td>
+			<td></td>
 		</tr>
+		
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.city"/></th>
-			<td><form:input path="city" class="inp-form" /></td>
-			<td>
-			</td>
-		</tr>
-		<tr>
-		<th valign="top"><spring:message code="merchant.label.state"/></th>
+		<th valign="top"><spring:message code="cardproduct.label.currency"/></th>
 		<td>	
-		<form:select path="state" class="styledselect_form_1">
-			<option value="">All</option>
-			<option value="">Products</option>
-			<option value="">Categories</option>
-			<option value="">Clients</option>
-			<option value="">News</option>
+		<form:select path="currency" class="styledselect_form_1">
+			<option value="INR">Indian Rupee</option>
 		</form:select>
 		</td>
 		<td></td>
 		</tr>
+		
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.phone"/></th>
-			<td><form:input path="phone" class="inp-form" /></td>
+		<th valign="top"><spring:message code="cardproduct.label.issuing.merchant"/></th>
+		<td>	
+			<form:select path="issuingMerchant" class="styledselect_form_1">
+				<form:option value="0" label="-Select-" />
+				<form:options items="${merchantList}" itemValue="merchantId" itemLabel="name"/>
+			</form:select>
+		</td>
+		<td></td>
+		</tr>
+
+		<tr>
+			<th valign="top"><spring:message code="cardproduct.label.point.program"/></th>
+			<td>
+				<form:checkbox path="pointProgram" value="1"/>
+			</td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.mobile"/></th>
-			<td><form:input path="mobile" class="inp-form" /></td>
+			<th valign="top"><spring:message code="cardproduct.label.card.type"/></th>
+			<td>
+				<form:select path="cardType" class="styledselect_form_1">
+					<form:option value="PRELOADED">Preloaded</form:option>
+					<form:option value="RELOADABLE">Reloadable</form:option>
+					<form:option value="GIFT_CARD">Gift Card</form:option>
+				</form:select>
+			</td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.email"/></th>
-			<td><form:input path="email" class="inp-form" /></td>
+			<th valign="top"><spring:message code="cardproduct.label.reload.limit"/></th>
+			<td><form:input path="reloadLimit" class="inp-form" /></td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<th valign="top"><spring:message code="merchant.label.website"/></th>
-			<td><form:input path="website" class="inp-form" /></td>
+			<th valign="top"><spring:message code="cardproduct.label.redeem.limit"/></th>
+			<td><form:input path="redeemLimit" class="inp-form" /></td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-		<th valign="top"><spring:message code="merchant.label.status"/></th>
+			<th valign="top"><spring:message code="cardproduct.label.supported.txn"/></th>
+			<td>
+				<form:select path="supportedTxn" class="styledselect_form_1" multiple="multiple">
+					<form:option value="0" label="-Select-" />
+					<form:options items="${txnList}" itemValue="txnCode" itemLabel="txnName"/>
+				</form:select>			
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<th valign="top"><spring:message code="cardproduct.label.online.pin.required"/></th>
+			<td>	
+				<form:checkbox path="onlinePinRequired" value="1"/>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+		<th valign="top"><spring:message code="cardproduct.label.status"/></th>
 		<td>	
 		<form:select path="status" class="styledselect_form_1">
 			<option value="1">Active</option>

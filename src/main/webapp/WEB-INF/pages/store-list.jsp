@@ -21,7 +21,7 @@
 <div id="content">
 
 	<!--  start page-heading -->
-	<div id="page-heading"><h1><spring:message code="merchant.page.heading"/></h1>
+	<div id="page-heading"><h1><spring:message code="store.page.heading"/> : ${merchant.name}</h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -42,44 +42,14 @@
 			<!--  start table-content  -->
 			<div id="table-content">
 			
-				<!--  start message-yellow -->
-				<div id="message-yellow">
-				<table border="0" width="100%" cellpadding="0" cellspacing="0">
-				<tr>
-					<td class="yellow-left">You have a new message. <a href="">Go to Inbox.</a></td>
-					<td class="yellow-right"><a class="close-yellow"><img src="<c:url value="/resources/images/table/icon_close_yellow.gif"/>"   alt="" /></a></td>
-				</tr>
-				</table>
-				</div>
-				<!--  end message-yellow -->
-				
-				<!--  start message-red -->
-				<div id="message-red">
-				<table border="0" width="100%" cellpadding="0" cellspacing="0">
-				<tr>
-					<td class="red-left">Error. <a href="">Please try again.</a></td>
-					<td class="red-right"><a class="close-red"><img src="<c:url value="/resources/images/table/icon_close_red.gif"/>"   alt="" /></a></td>
-				</tr>
-				</table>
-				</div>
-				<!--  end message-red -->
-				
-				<!--  start message-blue -->
-				<div id="message-blue">
-				<table border="0" width="100%" cellpadding="0" cellspacing="0">
-				<tr>
-					<td class="blue-left">Welcome back. <a href="">View my account.</a> </td>
-					<td class="blue-right"><a class="close-blue"><img src="<c:url value="/resources/images/table/icon_close_blue.gif"/>"   alt="" /></a></td>
-				</tr>
-				</table>
-				</div>
-				<!--  end message-blue -->
+			<c:url var="createStoreUrl" value="/merc/${merchant.uid}/store/add" />
 			
 				<!--  start message-green -->
 				<div id="message-green">
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
 				<tr>
-					<td class="green-left">Product added sucessfully. <a href="">Add new one.</a></td>
+				
+					<td class="green-left">Product added sucessfully. <a href="${createStoreUrl}">Add new one.</a></td>
 					<td class="green-right"><a class="close-green"><img src="<c:url value="/resources/images/table/icon_close_green.gif"/>"   alt="" /></a></td>
 				</tr>
 				</table>
@@ -109,8 +79,8 @@
 					<td>${store.phone}</td>
 					<td><a href="">${store.website}</a></td>
 					<td class="options-width">
-					<c:url var="editUrl" value="/merc/edit/${store.uid}" />
-					<c:url var="delUrl" value="/merc/del/${store.uid}" />
+					<c:url var="editUrl" value="/store/edit/${store.uid}" />
+					<c:url var="delUrl" value="/store/del/${store.uid}" />
 					<a href="${editUrl}" title="Edit" class="icon-1 info-tooltip"></a>
 					<a href="${delUrl}" title="Delete" class="icon-2 info-tooltip"></a>
 					</td>
@@ -124,6 +94,17 @@
 			</div>
 			<!--  end content-table  -->
 		
+			<!--  start actions-box ............................................... -->
+			<div id="actions-box">
+				<a href="" class="action-slider"></a>
+				<div id="actions-box-slider">
+					<a href="" class="action-edit">Edit</a>
+					<a href="" class="action-delete">Delete</a>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!-- end actions-box........... -->
+			
 			<!--  start paging..................................................... -->
 			<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
 			<tr>

@@ -21,7 +21,7 @@
 <div id="content">
 
 	<!--  start page-heading -->
-	<div id="page-heading"><h1><spring:message code="merchant.page.heading"/></h1>
+	<div id="page-heading"><h1><spring:message code="cardproduct.page.heading"/></h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -42,13 +42,13 @@
 			<!--  start table-content  -->
 			<div id="table-content">
 			
-			<c:url var="createMerchanUrl" value="/merc/add" />
+			<c:url var="createCardProductUrl" value="/crdpdt/add" />
 			
 				<!--  start message-green -->
 				<div id="message-green">
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
 				<tr>
-					<td class="green-left">Product added Successfully. <a href="${createMerchanUrl}">Add new one.</a></td>
+					<td class="green-left">Product added Successfully. <a href="${createCardProductUrl}">Add new one.</a></td>
 					<td class="green-right"><a class="close-green"><img src="<c:url value="/resources/images/table/icon_close_green.gif"/>"   alt="" /></a></td>
 				</tr>
 				</table>
@@ -57,33 +57,33 @@
 		
 		 
 				<!--  start product-table ..................................................................................... -->
-			<c:if test="${!empty merchantList}">
+			<c:if test="${!empty cardProductList}">
 				<form id="mainform" action="">
 				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Merchant Name</a>	</th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Merchant Id</a></th>
-					<th class="table-header-repeat line-left"><a href="">Address</a></th>
-					<th class="table-header-repeat line-left"><a href="">Contact Number</a></th>
-					<th class="table-header-repeat line-left"><a href="">Website</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">CardProduct Name</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">UPC</a></th>
+					<th class="table-header-repeat line-left"><a href="">Description</a></th>
+					<th class="table-header-repeat line-left"><a href="">Issuing Merchant</a></th>
+					<th class="table-header-repeat line-left"><a href="">Supported Txn</a></th>
+					<th class="table-header-repeat line-left"><a href="">Status</a></th>
 					<th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>
-				<c:forEach items="${merchantList}" var="merchant">
+				<c:forEach items="${cardProductList}" var="cardProduct">
 				<tr>
 					<td><input  type="checkbox"/></td>
-					<td>${merchant.name}</td>
-					<td>${merchant.merchantId}</td>
-					<td><a href="">${merchant.address}</a></td>
-					<td>${merchant.phone}</td>
-					<td><a href="">${merchant.website}</a></td>
+					<td>${cardProduct.name}</td>
+					<td>${cardProduct.upc}</td>
+					<td><a href="">${cardProduct.description}</a></td>
+					<td>${cardProduct.issuingMerchant}</td>
+					<td>${cardProduct.supportedTxn}</td>
+					<td>${cardProduct.status}</td>
 					<td class="options-width">
-					<c:url var="editUrl" value="/merc/edit/${merchant.uid}" />
-					<c:url var="delUrl" value="/merc/del/${merchant.uid}" />
-					<c:url var="storeUrl" value="/merc/${merchant.uid}/store" />
+					<c:url var="editUrl" value="/crdpdt/edit/${cardProduct.uid}" />
+					<c:url var="delUrl" value="/crdpdt/del/${cardProduct.uid}" />
 					<a href="${editUrl}" title="Edit" class="icon-1 info-tooltip"></a>
 					<a href="${delUrl}" title="Delete" class="icon-2 info-tooltip"></a>
-					<a href="${storeUrl}" title="Show Stores" class="icon-4 info-tooltip"></a>
 					</td>
 				</tr>
 				</c:forEach>

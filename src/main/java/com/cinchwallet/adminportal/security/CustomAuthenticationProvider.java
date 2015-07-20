@@ -34,7 +34,7 @@ public class CustomAuthenticationProvider implements AuthenticationManager {
 */
 		User user = new User();
 		user.setFirstName("Manoj");
-		user.setPassword("pass");
+		user.setPassword("1111");
 		Role r = new Role();
 		r.setName("ROLE_USER");
 		List<Role> roles = new ArrayList<Role>();

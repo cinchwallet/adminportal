@@ -27,7 +27,7 @@ public class Merchant implements Serializable {
 	private Integer uid;
 
 	@Column(name = "MERCHANT_ID")
-	private String merchantId;
+	private Long merchantId;
 
 	@Column(name = "NAME")
 	private String name;
@@ -186,11 +186,11 @@ public class Merchant implements Serializable {
 		this.updatedTs = updatedTs;
 	}
 
-	public String getMerchantId() {
+	public Long getMerchantId() {
 		return merchantId;
 	}
 
-	public void setMerchantId(String merchantId) {
+	public void setMerchantId(Long merchantId) {
 		this.merchantId = merchantId;
 	}
 

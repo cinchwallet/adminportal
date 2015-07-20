@@ -52,6 +52,11 @@ public class MerchantServiceImpl implements MerchantService {
 		return 0;
 	}
 
+	@Override
+	public Long getNextMerchantId() {
+		return merchantDao.getNextMerchantId();
+	}
+	
 	//Store related functions
 
 	@Override
@@ -83,5 +88,10 @@ public class MerchantServiceImpl implements MerchantService {
 	public int update(Store store) {
 		storeDao.update(store);
 		return 0;
+	}
+	
+	@Override
+	public Long getNextStoreId() {
+		return storeDao.getNextStoreId();
 	}
 }

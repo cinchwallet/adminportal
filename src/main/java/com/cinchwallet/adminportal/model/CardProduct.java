@@ -57,9 +57,6 @@ public class CardProduct implements Serializable {
 	@Column(name = "REDEEM_LIMIT")
 	private Double redeemLimit;
 
-	@Column(name = "IS_DELETED")
-	private Boolean isDeleted;
-
 	@Column(name = "ONLINE_PIN_REQUIRED")
 	private Boolean onlinePinRequired;
 
@@ -174,14 +171,6 @@ public class CardProduct implements Serializable {
 
 	public void setRedeemLimit(Double redeemLimit) {
 		this.redeemLimit = redeemLimit;
-	}
-
-	public Boolean getIsDeleted() {
-		return isDeleted;
-	}
-
-	public void setIsDeleted(Boolean isDeleted) {
-		this.isDeleted = isDeleted;
 	}
 
 	public Date getCreateTs() {

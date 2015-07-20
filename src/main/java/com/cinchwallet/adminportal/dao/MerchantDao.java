@@ -9,4 +9,6 @@ import com.cinchwallet.adminportal.model.Store;
 public interface MerchantDao extends GenericDao<Serializable, Merchant>{
 
 	public List<Store> getStores(int merchantId);
+	
+	public Long getNextMerchantId();
 }
