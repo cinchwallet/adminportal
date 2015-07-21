@@ -6,5 +6,5 @@ import com.cinchwallet.adminportal.model.Store;
 
 public interface StoreDao extends GenericDao<Serializable, Store>{
 
-	public Long getNextStoreId();
+	public String getNextStoreId();
 }

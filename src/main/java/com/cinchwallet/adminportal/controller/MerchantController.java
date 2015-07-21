@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cinchwallet.adminportal.constant.Constants;
+import com.cinchwallet.adminportal.model.Filter;
 import com.cinchwallet.adminportal.model.Merchant;
 import com.cinchwallet.adminportal.model.Store;
 import com.cinchwallet.adminportal.services.MerchantService;
@@ -21,10 +23,12 @@ public class MerchantController {
 	MerchantService merchantService;
 	
 	@RequestMapping(Constants.MERCHANT)
-	public String showMerchant(Model model) {
+	public String showMerchant(@RequestParam(value="name", required=false) String name, @RequestParam(value="mid", required=false) String merchantId, Model model) {
 		//show default 10 merchants
-		List<Merchant> mList = merchantService.getList();
+		Filter filter = new Filter(null, name, merchantId);
+		List<Merchant> mList = merchantService.getList(filter);
 		model.addAttribute("merchantList", mList);
+		model.addAttribute("filter", filter);
 		return Constants.PAGE_MERCHANT;
 	}
 	
@@ -59,12 +63,16 @@ public class MerchantController {
 	//store related functions
 	
 	@RequestMapping(Constants.MERCHANT + "/{id}/" + Constants.STORE)
-	public String showStores(@PathVariable int id, Model model) {
+	public String showStores(@PathVariable int id, @RequestParam(value="name", required=false) String name, 
+			@RequestParam(value="sid", required=false) String storeId, Model model) {
 		//read merchants store
-		List<Store> storeList = merchantService.getStores(id);
 		Merchant merchant = merchantService.getRowById(id);
+		Filter filter = new Filter(null, name, merchant.getMerchantId());
+		filter.setSid(storeId);
+		List<Store> storeList = merchantService.getStores(id, filter);
 		model.addAttribute("merchant", merchant);
 		model.addAttribute("storeList", storeList);
+		model.addAttribute("filter", filter);
 		return Constants.PAGE_STORE;
 	}	
 	

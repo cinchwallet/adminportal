@@ -27,7 +27,7 @@ public class Store implements Serializable {
 	private Integer uid;
 
 	@Column(name = "STORE_ID")
-	private Long storeId;
+	private String storeId;
 
 	@Column(name = "MERCHANT_ID")
 	private int merchantId;
@@ -213,11 +213,11 @@ public class Store implements Serializable {
 		this.contactDetail = contactDetail;
 	}
 
-	public Long getStoreId() {
+	public String getStoreId() {
 		return storeId;
 	}
 
-	public void setStoreId(Long storeId) {
+	public void setStoreId(String storeId) {
 		this.storeId = storeId;
 	}
 

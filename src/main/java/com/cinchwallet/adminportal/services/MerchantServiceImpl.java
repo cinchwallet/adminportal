@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cinchwallet.adminportal.dao.MerchantDao;
 import com.cinchwallet.adminportal.dao.StoreDao;
+import com.cinchwallet.adminportal.model.Filter;
 import com.cinchwallet.adminportal.model.Merchant;
 import com.cinchwallet.adminportal.model.Store;
 
@@ -26,6 +27,11 @@ public class MerchantServiceImpl implements MerchantService {
 	public int save(Merchant merchant) {
 		merchantDao.saveOrUpdate(merchant);
 		return 0;
+	}
+
+	@Override
+	public List<Merchant> getList(Filter filter) {
+		return merchantDao.getAll(filter);
 	}
 
 	@Override
@@ -53,15 +59,15 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 	@Override
-	public Long getNextMerchantId() {
+	public String getNextMerchantId() {
 		return merchantDao.getNextMerchantId();
 	}
 	
 	//Store related functions
 
 	@Override
-	public List<Store> getStores(int merchantId) {
-		return merchantDao.getStores(merchantId);
+	public List<Store> getStores(int merchantId, Filter filter) {
+		return merchantDao.getStores(merchantId, filter);
 	}
 
 
@@ -91,7 +97,7 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 	
 	@Override
-	public Long getNextStoreId() {
+	public String getNextStoreId() {
 		return storeDao.getNextStoreId();
 	}
 }

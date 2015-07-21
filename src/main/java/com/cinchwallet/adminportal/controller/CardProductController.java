@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cinchwallet.adminportal.constant.Constants;
 import com.cinchwallet.adminportal.model.CardProduct;
+import com.cinchwallet.adminportal.model.Filter;
 import com.cinchwallet.adminportal.model.Merchant;
 import com.cinchwallet.adminportal.model.TxnType;
 import com.cinchwallet.adminportal.services.CardProductService;
@@ -30,10 +32,15 @@ public class CardProductController {
 	DataService dataService;
 
 	@RequestMapping(Constants.CARD_PRODUCT)
-	public String showCardProduct(Model model) {
+	public String showCardProduct(@RequestParam(value="name", required=false) String name, @RequestParam(value="upc", required=false) String upc, 
+				@RequestParam(value="mid", required=false) String merchantId, Model model) {
 		//show default 10 card product
-		List<CardProduct> cpList = cardProductService.getList();
+		Filter filter = new Filter(upc, name, merchantId); 
+		List<CardProduct> cpList = cardProductService.getList(filter);
 		model.addAttribute("cardProductList", cpList);
+		List<Merchant> mList = merchantService.getList();
+		model.addAttribute("merchantList", mList);
+		model.addAttribute("filter", filter);
 		return Constants.PAGE_CARDPRODUCT;
 	}
 	

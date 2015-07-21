@@ -10,13 +10,14 @@ import com.cinchwallet.adminportal.model.Store;
 public class StoreDaoImpl extends AbstractDao<Integer, Store> implements StoreDao {
 
 	@Override
-	public Long getNextStoreId() {
+	public String getNextStoreId() {
 		Query q = getSession().createQuery("select max(storeId) from Store");
 		Long storeId = (Long) q.uniqueResult();
 		if (storeId == null) {
 			storeId = 10000000000L;
 		}
-		return storeId + 1;
+		storeId = storeId+1;
+		return storeId.toString();
 
 	}
 

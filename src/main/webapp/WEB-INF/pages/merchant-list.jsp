@@ -42,6 +42,30 @@
 			<!--  start table-content  -->
 			<div id="table-content">
 			
+			<!-- Search screen - start -->
+			<c:url var="saveUrl" value="/merc" />
+			<form:form modelAttribute="filter" name="form" method="GET" action="${saveUrl}">
+			
+				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="id-form">
+					<tr>
+						<th valign="middle"><spring:message code="merchant.label.name"/></th>
+						<td><form:input path="name" class="inp-form" /></td>
+						<td></td>
+						<th valign="middle"><spring:message code="merchant.label.id"/></th>
+						<td>
+							<form:select path="mid" class="styledselect_form_1">
+								<form:option value="" label="-Select-" />
+								<form:options items="${merchantList}" itemValue="merchantId" itemLabel="name"/>
+							</form:select>						
+						</td>
+						<td><input type="submit" class="submit-login"  /></td>
+					</tr>
+
+				</table>
+				</form:form>
+				<!-- Search screen - end -->
+
+			
 			<c:url var="createMerchanUrl" value="/merc/add" />
 			
 				<!--  start message-green -->

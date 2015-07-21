@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cinchwallet.adminportal.dao.CardProductDao;
 import com.cinchwallet.adminportal.model.CardProduct;
+import com.cinchwallet.adminportal.model.Filter;
 
 @Transactional
 @Service
@@ -24,8 +25,8 @@ public class CardProductServiceImpl implements CardProductService {
 	}
 
 	@Override
-	public List<CardProduct> getList() {
-		return cardProductDao.getAll();
+	public List<CardProduct> getList(Filter filter) {
+		return cardProductDao.getAll(filter);
 	}
 
 	@Override
