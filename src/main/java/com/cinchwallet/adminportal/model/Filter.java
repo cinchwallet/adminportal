@@ -9,11 +9,27 @@ public class Filter {
 	private String mid;
 	private String sid;
 	
+	//transaction search
+	private String cardNumber;
+	private String txnDate;
+	private String ms;
+	
+	
+	public Filter() {}
+	
 	public Filter(String upc, String name, String mid) {
 		this.upc = upc;
 		this.name = name;
 		this.mid = mid;
 	}
+	public Filter(String mid, String sid, String cardNumber, String txnDate) {
+		this.mid = mid;
+		this.sid = mid;
+		this.cardNumber = cardNumber;
+		if(txnDate!=null && txnDate.length()>0)
+			this.txnDate = txnDate;
+	}
+
 	public String getUpc() {
 		return upc;
 	}
@@ -38,5 +54,25 @@ public class Filter {
 	public void setSid(String sid) {
 		this.sid = sid;
 	}
+	public String getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+	public String getTxnDate() {
+		return txnDate;
+	}
+	public void setTxnDate(String txnDate) {
+		this.txnDate = txnDate;
+	}
 
+	public String getMs() {
+		return ms;
+	}
+
+	public void setMs(String ms) {
+		this.ms = ms;
+	}
+	
 }

@@ -5,55 +5,68 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.cinchwallet.adminportal.constant.Constants;
-import com.cinchwallet.adminportal.model.Employee;
-import com.cinchwallet.adminportal.services.UserService;
+import com.cinchwallet.adminportal.model.Filter;
+import com.cinchwallet.adminportal.model.Merchant;
+import com.cinchwallet.adminportal.model.Store;
+import com.cinchwallet.adminportal.model.TxnLog;
+import com.cinchwallet.adminportal.services.DataService;
+import com.cinchwallet.adminportal.services.MerchantService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	UserService dataService;
+	DataService dataService;
+	
+	@Autowired
+	MerchantService merchantService;
 
 	@RequestMapping("home")
 	public String getForm(Model model) {
 		return Constants.PAGE_HOME;
 	}
 	
-	@RequestMapping("register")
-	public ModelAndView registerUser(@ModelAttribute Employee employee) {
-		dataService.save(employee);
-		return new ModelAndView("redirect:list");
-	}
-	
-	@RequestMapping("list")
-	public ModelAndView getList() {
-		List employeeList = dataService.getList();
-		return new ModelAndView("list","employeeList",employeeList);
-	}
-	
-	@RequestMapping("delete")
-	public ModelAndView deleteUser(@RequestParam int id) {
-		dataService.delete(id);
-		return new ModelAndView("redirect:list");
-	}
-	
-	
-	@RequestMapping("adminform")
-	public String getAdminForm(Model model) {
-		Employee employee = new Employee();
-		model.addAttribute("employee", employee);
-		return "adminform";
+	@RequestMapping("txn")
+	public String searchTxn(@RequestParam(value="mid", required=false) String mid, @RequestParam(value="sid", required=false) String sid, 
+			@RequestParam(value="crd", required=false) String card, @RequestParam(value="txnDate", required=false) String txnDate, 
+			@RequestParam(value="ms", required=false) String ms, Model model) {
+		
+		Filter filter = new Filter(mid, sid, card, txnDate);
+		Integer merchantId = null;
+		
+		try {
+			merchantId = Integer.parseInt(mid);
+		} catch (NumberFormatException e) {
+		}
+		Merchant merchant = merchantService.getMerchant(mid);
+		if(merchant!=null){
+			merchantId = merchant.getUid();
+		}
+		
+		List<Store> storeList = merchantService.getStores(merchantId, null);
+		//populate stores only if merchant is selected.
+		if(merchantId!=null)
+			model.addAttribute("storeList", storeList);
+		
+		if("true".equals(ms)){
+			//get the store list only
+		}else{
+			List<TxnLog> txnList = dataService.searchTxn(filter);
+			model.addAttribute("txnList", txnList);
+		}
+		List<Merchant> merchantList = merchantService.getList();
+		model.addAttribute("merchantList", merchantList);
+		model.addAttribute("filter", filter);
+		return Constants.PAGE_TRANSACTION;
 	}
 
-	@RequestMapping("admintable")
-	public String getAdminTable(Model model) {
-		return "table";
+	@RequestMapping("logout")
+	public String logout(Model model) {
+		return Constants.PAGE_HOME;
 	}
-
+	
 }

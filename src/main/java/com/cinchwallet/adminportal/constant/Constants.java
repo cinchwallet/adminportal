@@ -10,6 +10,7 @@ public interface Constants {
 	String PAGE_STORE_ADD = "store-add";
 	String PAGE_CARDPRODUCT = "cardproduct-list";
 	String PAGE_CARDPRODUCT_ADD = "cardproduct-add";
+	String PAGE_TRANSACTION = "transaction";
 
 	//root url
 	String MERCHANT= "merc";

@@ -14,6 +14,8 @@ public interface MerchantService {
 	public List<Merchant> getList();
 
 	public Merchant getRowById(int id);
+	
+	public Merchant getMerchant(String merchantId);
 
 	public int update(Merchant employee);
 
@@ -21,7 +23,7 @@ public interface MerchantService {
 	
 	public String getNextMerchantId();
 	
-	public List<Store> getStores(int merchantId, Filter filter);
+	public List<Store> getStores(Integer merchantId, Filter filter);
 
 	
 	public int save(Store store);

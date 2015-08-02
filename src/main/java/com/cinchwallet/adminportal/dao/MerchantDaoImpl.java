@@ -9,7 +9,6 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.cinchwallet.adminportal.model.CardProduct;
 import com.cinchwallet.adminportal.model.Filter;
 import com.cinchwallet.adminportal.model.Merchant;
 import com.cinchwallet.adminportal.model.Store;
@@ -18,9 +17,11 @@ import com.cinchwallet.adminportal.model.Store;
 public class MerchantDaoImpl extends AbstractDao<Integer, Merchant> implements MerchantDao {
 
 	@Override
-	public List<Store> getStores(int merchantId, Filter filter) {
+	public List<Store> getStores(Integer merchantId, Filter filter) {
 		Criteria criteria = getSession().createCriteria(Store.class);
-		criteria.add(Restrictions.eq("merchantId", merchantId));
+		if(merchantId!=null){
+			criteria.add(Restrictions.eq("merchantId", merchantId));
+		}
 		if (filter != null) {
 			if (filter.getName() != null && filter.getName().length() > 0) {
 				criteria.add(Restrictions.ilike("name", filter.getName(), MatchMode.ANYWHERE));
@@ -37,7 +38,9 @@ public class MerchantDaoImpl extends AbstractDao<Integer, Merchant> implements M
 	@Override
 	public String getNextMerchantId() {
 	    Query q = getSession().createQuery("select max(merchantId) from Merchant");
-	    Long merchantId = (Long) q.uniqueResult();
+	    String mid = (String) q.uniqueResult();
+	    
+	    Long merchantId = Long.parseLong(mid);
 	    if(merchantId==null){
 	    	merchantId = 10000000000L;
 	    }
@@ -57,5 +60,17 @@ public class MerchantDaoImpl extends AbstractDao<Integer, Merchant> implements M
 		}
 		return criteria.list();
 
+	}
+	
+	@Override
+	public Merchant getMerchant(String merchantId) {
+		Criteria criteria = getSession().createCriteria(Merchant.class);
+		if(merchantId!=null && merchantId.length()>0){
+			criteria.add(Restrictions.ilike("merchantId", merchantId, MatchMode.EXACT));	
+		}
+		List list = criteria.list();
+		if(list!=null && list.size()>0)
+			return (Merchant)list.get(0);
+		return null;
 	}
 }

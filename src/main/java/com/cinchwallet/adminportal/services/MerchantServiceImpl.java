@@ -63,10 +63,15 @@ public class MerchantServiceImpl implements MerchantService {
 		return merchantDao.getNextMerchantId();
 	}
 	
+	@Override
+	public Merchant getMerchant(String merchantId) {
+		return merchantDao.getMerchant(merchantId);
+	}
+	
 	//Store related functions
 
 	@Override
-	public List<Store> getStores(int merchantId, Filter filter) {
+	public List<Store> getStores(Integer merchantId, Filter filter) {
 		return merchantDao.getStores(merchantId, filter);
 	}
 

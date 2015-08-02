@@ -38,6 +38,7 @@
                 <value>com.cinchwallet.adminportal.model.TxnType</value>  
                 <value>com.cinchwallet.adminportal.model.User</value>  
                 <value>com.cinchwallet.adminportal.model.UserLogin</value>  
+                <value>com.cinchwallet.adminportal.model.TxnLog</value>  
             </list>  
         </property> 
 		<property name="hibernateProperties">

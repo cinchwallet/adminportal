@@ -12,7 +12,8 @@ public class StoreDaoImpl extends AbstractDao<Integer, Store> implements StoreDa
 	@Override
 	public String getNextStoreId() {
 		Query q = getSession().createQuery("select max(storeId) from Store");
-		Long storeId = (Long) q.uniqueResult();
+	    String sid = (String) q.uniqueResult();
+	    Long storeId = Long.parseLong(sid);
 		if (storeId == null) {
 			storeId = 10000000000L;
 		}

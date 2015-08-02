@@ -36,7 +36,7 @@
 			<div class="nav-divider">&nbsp;</div>
 			<div class="showhide-account"><img src="<c:url value="/resources/images/shared/nav/nav_myaccount.gif"/>" width="93" height="14" alt="" /></div>
 			<div class="nav-divider">&nbsp;</div>
-			<a href="" id="logout"><img src="<c:url value="/resources/images/shared/nav/nav_logout.gif"/>" width="64" height="14" alt="" /></a>
+			<a href="<c:url value="j_spring_security_logout" />" id="logout"><img src="<c:url value="/resources/images/shared/nav/nav_logout.gif"/>" width="64" height="14" alt="" /></a>
 			<div class="clear">&nbsp;</div>
 		
 			<!--  start account-content -->	

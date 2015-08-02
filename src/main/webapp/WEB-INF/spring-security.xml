@@ -16,8 +16,7 @@
 
 		<logout
 				invalidate-session="true"
-				logout-success-url="/login.jsp"
-				logout-url="/logout"/>
+				logout-success-url="/login.jsp"/>
 
 		<custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER"/>
 	</http>
