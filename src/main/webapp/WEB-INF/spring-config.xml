@@ -39,6 +39,7 @@
                 <value>com.cinchwallet.adminportal.model.User</value>  
                 <value>com.cinchwallet.adminportal.model.UserLogin</value>  
                 <value>com.cinchwallet.adminportal.model.TxnLog</value>  
+                <value>com.cinchwallet.adminportal.model.Card</value>  
             </list>  
         </property> 
 		<property name="hibernateProperties">

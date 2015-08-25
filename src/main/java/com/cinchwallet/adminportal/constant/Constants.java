@@ -11,12 +11,15 @@ public interface Constants {
 	String PAGE_CARDPRODUCT = "cardproduct-list";
 	String PAGE_CARDPRODUCT_ADD = "cardproduct-add";
 	String PAGE_TRANSACTION = "transaction";
+	String PAGE_CARD = "card-list";
+	String PAGE_CARD_ADD = "card-add";
 
 	//root url
 	String MERCHANT= "merc";
 	String MERCHANT_STORE= "merc/store";
 	String STORE= "store";
 	String CARD_PRODUCT= "crdpdt";
+	String CARD= "crd";
 	
 	//common action
 	String ADD = "/add";

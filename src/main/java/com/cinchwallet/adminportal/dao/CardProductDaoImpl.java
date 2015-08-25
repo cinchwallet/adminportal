@@ -17,14 +17,16 @@ public class CardProductDaoImpl extends AbstractDao<Integer, CardProduct> implem
 	@Override
 	public List<CardProduct> getAll(Filter filter) {
 		Criteria criteria = getSession().createCriteria(CardProduct.class);
-		if(filter.getName()!=null && filter.getName().length()>0){
-			criteria.add(Restrictions.ilike("name", filter.getName(), MatchMode.ANYWHERE));	
-		}
-		if(filter.getUpc()!=null && filter.getUpc().length()>0){
-			criteria.add(Restrictions.ilike("upc", filter.getUpc(), MatchMode.ANYWHERE));	
-		}
-		if(filter.getMid()!=null && filter.getMid().length()>0){
-			criteria.add(Restrictions.ilike("issuingMerchant", filter.getMid(), MatchMode.ANYWHERE));	
+		if(filter!=null){
+			if(filter.getName()!=null && filter.getName().length()>0){
+				criteria.add(Restrictions.ilike("name", filter.getName(), MatchMode.ANYWHERE));	
+			}
+			if(filter.getUpc()!=null && filter.getUpc().length()>0){
+				criteria.add(Restrictions.ilike("upc", filter.getUpc(), MatchMode.ANYWHERE));	
+			}
+			if(filter.getMid()!=null && filter.getMid().length()>0){
+				criteria.add(Restrictions.ilike("issuingMerchant", filter.getMid(), MatchMode.ANYWHERE));	
+			}
 		}
 		return criteria.list();
 	}

@@ -63,6 +63,7 @@
 <c:url var="transaction" value="/txn" />
 <c:url var="viewUser" value="/usr" />
 <c:url var="addUser" value="/usr/add" />
+<c:url var="viewCard" value="/crd" />
 
 <!-- Url configuration - end -->
 
@@ -131,6 +132,19 @@
 			<ul class="sub">
 				<li><a href="${viewUser}">View Users</a></li>
 				<li><a href="${addUser}">Add User</a></li>
+			</ul>
+		</div>
+		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+		</li>
+		</ul>
+		
+		<div class="nav-divider">&nbsp;</div>
+		
+		<ul class="select"><li><a href="#nogo"><b>Card</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<div class="select_sub">
+			<ul class="sub">
+				<li><a href="${viewCard}">View Card</a></li>
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
