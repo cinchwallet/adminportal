@@ -11,6 +11,9 @@ public interface Constants {
 	String PAGE_CARDPRODUCT = "cardproduct-list";
 	String PAGE_CARDPRODUCT_ADD = "cardproduct-add";
 	String PAGE_TRANSACTION = "transaction";
+
+	String PAGE_CMS_HOME = "cms";
+
 	String PAGE_CARD = "card-list";
 	String PAGE_CARD_ADD = "card-add";
 

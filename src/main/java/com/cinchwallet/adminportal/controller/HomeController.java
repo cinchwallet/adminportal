@@ -7,12 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.cinchwallet.adminportal.constant.Constants;
 import com.cinchwallet.adminportal.model.Filter;
 import com.cinchwallet.adminportal.model.Merchant;
 import com.cinchwallet.adminportal.model.Store;
 import com.cinchwallet.adminportal.model.TxnLog;
+import com.cinchwallet.adminportal.security.User;
 import com.cinchwallet.adminportal.services.DataService;
 import com.cinchwallet.adminportal.services.MerchantService;
 
@@ -27,7 +30,15 @@ public class HomeController {
 
 	@RequestMapping("home")
 	public String getForm(Model model) {
-		return Constants.PAGE_HOME;
+		Authentication authentication  = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println(authentication);
+		User user = (User)authentication.getPrincipal();
+		if(user.getUsername().equalsIgnoreCase("manoj")){
+			return Constants.PAGE_HOME;	
+		}else{
+			return Constants.PAGE_CMS_HOME;
+		}
+		
 	}
 	
 	@RequestMapping("txn")
