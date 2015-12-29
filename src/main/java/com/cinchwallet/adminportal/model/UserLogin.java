@@ -49,16 +49,20 @@ public class UserLogin implements Serializable {
 
 	@Column(name = "STATUS")
 	private Boolean status;
+
+	@Column(name = "PARENT_ID")
+	private Long parentId;
+
+	/*	
 	
-	/*
 	 * This is one-to-one bidirectional mapping
 	 * 
 	 * Mapping user table with common key i.e. USER_ID (which is primary key in User table)
-	 */
+	 
 	@OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "USER_ID")
+	@JoinColumn(name = "USER_ID")
 	private User user;
-
+*/
 	@Transient
 	private Integer access;
 
@@ -132,13 +136,22 @@ public class UserLogin implements Serializable {
 		this.userType = userType;
 	}
 
-	public User getUser() {
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+
+/*	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+*/
+	
 	
 }

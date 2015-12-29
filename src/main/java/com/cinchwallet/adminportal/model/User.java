@@ -74,9 +74,9 @@ public class User implements Serializable{
   	 * Reference of UserLogin oject, mapped by is the variable name in UserLogin Table.
   	 * Mapping has been defined in the UserLogin table.
   	 */
-    @OneToOne(mappedBy="user")
+/*    @OneToOne(mappedBy="user")
   	private UserLogin userLogin;
-
+*/
     public String getAddress() {
         return address;
     }
@@ -181,13 +181,13 @@ public class User implements Serializable{
         this.updatedTs = updatedTs;
     }
 
-		public UserLogin getUserLogin() {
+/*		public UserLogin getUserLogin() {
 			return userLogin;
 		}
 
 		public void setUserLogin(UserLogin userLogin) {
 			this.userLogin = userLogin;
 		}
-
+*/
 
 }

@@ -51,6 +51,12 @@ public class CardProduct implements Serializable {
 	@Column(name = "CARD_TYPE")
 	private String cardType;
 
+	@Column(name = "EARN_POINT_RULE")
+	private String earnPointRule;
+
+	@Column(name = "BURN_POINT_RULE")
+	private String burnPointRule;
+
 	@Column(name = "RELOAD_LIMIT")
 	private Double reloadLimit;
 
@@ -189,4 +195,21 @@ public class CardProduct implements Serializable {
 		this.updatedTs = updatedTs;
 	}
 
+	public String getEarnPointRule() {
+		return earnPointRule;
+	}
+
+	public void setEarnPointRule(String earnPointRule) {
+		this.earnPointRule = earnPointRule;
+	}
+
+	public String getBurnPointRule() {
+		return burnPointRule;
+	}
+
+	public void setBurnPointRule(String burnPointRule) {
+		this.burnPointRule = burnPointRule;
+	}
+
+	
 }

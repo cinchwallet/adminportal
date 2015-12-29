@@ -76,6 +76,11 @@ public class Store implements Serializable {
 	
 	@Transient
 	private ContactDetail contactDetail;
+	
+	@Transient
+	private String userName;
+	@Transient
+	private String password;
 
 	public Integer getUid() {
 		return uid;
@@ -219,6 +224,22 @@ public class Store implements Serializable {
 
 	public void setStoreId(String storeId) {
 		this.storeId = storeId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	

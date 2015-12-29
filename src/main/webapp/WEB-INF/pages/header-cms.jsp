@@ -64,8 +64,6 @@
 <c:url var="viewUser" value="/usr" />
 <c:url var="addUser" value="/usr/add" />
 <c:url var="viewCard" value="/crd" />
-<c:url var="viewOffer" value="/offer" />
-<c:url var="addOffer" value="/offer/add" />
 
 <!-- Url configuration - end -->
 
@@ -86,75 +84,6 @@
 		
 		<div class="nav-divider">&nbsp;</div>
 		                    
-		<ul class="select"><li><a href=""><b>Merchant</b><!--[if IE 7]><!--></a><!--<![endif]-->
-		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<div class="select_sub show">
-			<ul class="sub">
-				<li><a href="${viewMerchant}">View Merchants</a></li>
-				<li><a href="${addMerchant}">Add Merchant</a></li>
-			</ul>
-		</div>
-		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-		</li>
-		</ul>
-		
-		<div class="nav-divider">&nbsp;</div>
-		
-		<ul class="select"><li><a href=""><b>Card Product</b><!--[if IE 7]><!--></a><!--<![endif]-->
-		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<div class="select_sub">
-			<ul class="sub">
-				<li><a href="${viewCardProduct}">View Card Products</a></li>
-				<li><a href="${addCardProduct}">Add Card Product</a></li>
-			</ul>
-		</div>
-		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-		</li>
-		</ul>
-		
-		<div class="nav-divider">&nbsp;</div>
-		
-		<ul class="select"><li><a href="${transaction}"><b>Transaction</b><!--[if IE 7]><!--></a><!--<![endif]-->
-		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<div class="select_sub">
-			<ul class="sub">
-				<li><a href="#nogo"></a></li>
-		 
-			</ul>
-		</div>
-		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-		</li>
-		</ul>
-		
-		
-		<div class="nav-divider">&nbsp;</div>
-		
-		<ul class="select"><li><a href="#nogo"><b>Offer</b><!--[if IE 7]><!--></a><!--<![endif]-->
-		<div class="select_sub">
-			<ul class="sub">
-				<li><a href="${viewOffer}">View Offers</a></li>
-				<li><a href="${addOffer}">Add Offer</a></li>
-			</ul>
-		</div>
-		</li>
-		</ul>
-		
-		<!-- 
-		<div class="nav-divider">&nbsp;</div>
-		
-		<ul class="select"><li><a href="#nogo"><b>User</b></a>
-		<div class="select_sub">
-			<ul class="sub">
-				<li><a href="${viewUser}">View Users</a></li>
-				<li><a href="${addUser}">Add User</a></li>
-			</ul>
-		</div>
-		</li>
-		</ul>
-		-->
-		
-		<div class="nav-divider">&nbsp;</div>
-		
 		<ul class="select"><li><a href="#nogo"><b>Card</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">

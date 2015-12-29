@@ -132,6 +132,18 @@
 			</td>
 		</tr>
 		<tr>
+			<th valign="top"><spring:message code="store.label.username"/></th>
+			<td><form:input path="userName" class="inp-form" /></td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<th valign="top"><spring:message code="store.label.password"/></th>
+			<td><form:input path="password" class="inp-form" /></td>
+			<td>
+			</td>
+		</tr>
+		<tr>
 		<th valign="top"><spring:message code="store.label.status"/></th>
 		<td>	
 		<form:select path="status" class="styledselect_form_1">

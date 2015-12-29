@@ -14,6 +14,9 @@ public class Filter {
 	private String txnDate;
 	private String ms;
 	
+	//offer search
+	private String promoCode;
+	
 	
 	public Filter() {}
 	
@@ -74,5 +77,14 @@ public class Filter {
 	public void setMs(String ms) {
 		this.ms = ms;
 	}
+
+	public String getPromoCode() {
+		return promoCode;
+	}
+
+	public void setPromoCode(String promoCode) {
+		this.promoCode = promoCode;
+	}
+
 	
 }

@@ -103,6 +103,22 @@
 			<td>
 			</td>
 		</tr>
+
+		<tr>
+			<th valign="top"><spring:message code="cardproduct.label.earnpoint.rule"/></th>
+			<td><form:input path="earnPointRule" class="inp-form" /></td>
+			<td>
+			</td>
+		</tr>
+
+		<tr>
+			<th valign="top"><spring:message code="cardproduct.label.burnpoint.rule"/></th>
+			<td><form:input path="burnPointRule" class="inp-form" /></td>
+			<td>
+			</td>
+		</tr>
+
+<!--  		
 		<tr>
 			<th valign="top"><spring:message code="cardproduct.label.card.type"/></th>
 			<td>
@@ -138,6 +154,7 @@
 			<td>
 			</td>
 		</tr>
+-->		
 		<tr>
 			<th valign="top"><spring:message code="cardproduct.label.online.pin.required"/></th>
 			<td>	

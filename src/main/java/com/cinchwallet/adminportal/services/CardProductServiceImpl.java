@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cinchwallet.adminportal.dao.CardProductDao;
+import com.cinchwallet.adminportal.dao.OfferDao;
 import com.cinchwallet.adminportal.model.CardProduct;
 import com.cinchwallet.adminportal.model.Filter;
+import com.cinchwallet.adminportal.model.PromoOffer;
 
 @Transactional
 @Service
@@ -17,6 +19,9 @@ public class CardProductServiceImpl implements CardProductService {
 
 	@Autowired
 	CardProductDao cardProductDao;
+	
+	@Autowired
+	OfferDao offerDao;
 
 	@Override
 	public int save(CardProduct cardProduct) {
@@ -45,6 +50,36 @@ public class CardProductServiceImpl implements CardProductService {
 	public int delete(int id) {
 		CardProduct cardProduct = cardProductDao.getByKey(id);
 		cardProductDao.delete(cardProduct);
+		return 0;
+	}
+
+	@Override
+	public List<PromoOffer> getOffers(Filter filter) {
+		return offerDao.getAll(filter);
+	}
+
+	@Override
+	public int save(PromoOffer promoOffer) {
+		offerDao.saveOrUpdate(promoOffer);
+		return 0;
+	}
+
+	@Override
+	public PromoOffer getPromoOffer(int id) {
+		PromoOffer promoOffer = offerDao.getByKey(id);
+		return promoOffer;
+	}
+
+	@Override
+	public int update(PromoOffer promoOffer) {
+		offerDao.update(promoOffer);
+		return 0;
+	}
+
+	@Override
+	public int deletePromoOffer(int id) {
+		PromoOffer promoOffer = offerDao.getByKey(id);
+		offerDao.delete(promoOffer);
 		return 0;
 	}
 }

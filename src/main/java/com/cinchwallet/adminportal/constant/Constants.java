@@ -17,12 +17,16 @@ public interface Constants {
 	String PAGE_CARD = "card-list";
 	String PAGE_CARD_ADD = "card-add";
 
+	String PAGE_OFFER = "offers-list";
+	String PAGE_OFFER_ADD = "offers-add";
+
 	//root url
 	String MERCHANT= "merc";
 	String MERCHANT_STORE= "merc/store";
 	String STORE= "store";
 	String CARD_PRODUCT= "crdpdt";
 	String CARD= "crd";
+	String OFFER= "offer";
 	
 	//common action
 	String ADD = "/add";

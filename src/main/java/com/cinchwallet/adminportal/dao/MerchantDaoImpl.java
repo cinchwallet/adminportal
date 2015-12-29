@@ -9,6 +9,7 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import com.cinchwallet.adminportal.constant.QueryConstant;
 import com.cinchwallet.adminportal.model.Filter;
 import com.cinchwallet.adminportal.model.Merchant;
 import com.cinchwallet.adminportal.model.Store;
@@ -39,6 +40,9 @@ public class MerchantDaoImpl extends AbstractDao<Integer, Merchant> implements M
 	public String getNextMerchantId() {
 	    Query q = getSession().createQuery("select max(merchantId) from Merchant");
 	    String mid = (String) q.uniqueResult();
+	    if(mid==null){
+	    	mid = "10000000000";
+	    }
 	    
 	    Long merchantId = Long.parseLong(mid);
 	    if(merchantId==null){

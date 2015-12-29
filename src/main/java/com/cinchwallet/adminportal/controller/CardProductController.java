@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cinchwallet.adminportal.constant.Constants;
+import com.cinchwallet.adminportal.model.Card;
 import com.cinchwallet.adminportal.model.CardProduct;
 import com.cinchwallet.adminportal.model.Filter;
 import com.cinchwallet.adminportal.model.Merchant;
+import com.cinchwallet.adminportal.model.PromoOffer;
 import com.cinchwallet.adminportal.model.TxnType;
 import com.cinchwallet.adminportal.services.CardProductService;
 import com.cinchwallet.adminportal.services.DataService;
@@ -78,5 +80,55 @@ public class CardProductController {
 		return "redirect:/crdpdt";
 	}
 	
+
+	//Offer API
+	
+    @RequestMapping(Constants.OFFER)
+	public String showOffer(@RequestParam(value="code", required=false) String promoCode, @RequestParam(value="upc", required=false) String upc, 
+				Model model) {
+		//show default 10 card product
+		Filter filter = new Filter(upc, null, null); 
+		filter.setPromoCode(promoCode);
+		
+		List<CardProduct> cpList = cardProductService.getList(null);
+		model.addAttribute("cardProductList", cpList);
+		
+		List<PromoOffer> offerList = cardProductService.getOffers(filter);
+		model.addAttribute("offerList", offerList);
+		model.addAttribute("filter", filter);
+		return Constants.PAGE_OFFER;
+	}
+	
+	@RequestMapping(Constants.OFFER + Constants.ADD)
+	public String addOffer(Model model) {
+		PromoOffer promoOffer = new PromoOffer();
+		model.addAttribute("offer", promoOffer);
+		
+		List<CardProduct> cpList = cardProductService.getList(null);
+		model.addAttribute("cardProductList", cpList);
+		return Constants.PAGE_OFFER_ADD;
+	}
+	
+	@RequestMapping(Constants.OFFER + Constants.EDIT + "/{id}")
+	public String editOffer(@PathVariable("id") int id, Model model) {
+		PromoOffer promoOffer = cardProductService.getPromoOffer(id);
+		model.addAttribute("offer", promoOffer);
+		List<CardProduct> cpList = cardProductService.getList(null);
+		model.addAttribute("cardProductList", cpList);
+		return Constants.PAGE_OFFER_ADD;
+	}
+	
+	@RequestMapping(Constants.OFFER + Constants.SAVE)
+	public String saveOffer(@ModelAttribute PromoOffer promoOffer) {
+		cardProductService.save(promoOffer);
+		return "redirect:/offer";
+	}
+	
+	@RequestMapping(Constants.OFFER+ Constants.DELETE + "/{id}")
+	public String deleteCard(@PathVariable("id") int id) {
+		cardProductService.deletePromoOffer(id);
+		return "redirect:/offer";
+	}
+
 	
 }

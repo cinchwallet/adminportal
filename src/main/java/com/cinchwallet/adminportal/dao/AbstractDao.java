@@ -32,8 +32,8 @@ public abstract class AbstractDao<PK extends Serializable, T> implements Generic
 		return (T) getSession().get(persistentClass, key);
 	}
 
-	public void save(T entity) {
-		getSession().persist(entity);
+	public Serializable save(T entity) {
+		return getSession().save(entity);
 	}
 
 	@Override
