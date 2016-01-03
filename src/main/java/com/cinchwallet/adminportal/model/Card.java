@@ -1,7 +1,7 @@
 package com.cinchwallet.adminportal.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,10 +56,10 @@ public class Card implements Serializable{
     @Column(name = "STATUS")
     private String status;
 
-    @Column(name = "CREATED_TIMESTAMP")
+    @Column(name = "CREATED_TS")
     private Date createTs;
 
-    @Column(name = "UPDATED_TIMESTAMP")
+    @Column(name = "UPDATED_TS")
     private Date updatedTs;
 
     public Double getBalance() {

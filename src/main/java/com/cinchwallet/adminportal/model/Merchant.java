@@ -2,7 +2,7 @@
 package com.cinchwallet.adminportal.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -19,6 +19,7 @@ public class Merchant implements Serializable {
 	public Merchant() {
 		this.createTs = new Date(System.currentTimeMillis());
 		this.updatedTs = new Date(System.currentTimeMillis());
+		this.status = true;
 	}
 
 	@Id
@@ -65,10 +66,10 @@ public class Merchant implements Serializable {
 	@Column(name = "STATUS")
 	private Boolean status;
 
-	@Column(name = "CREATED_TIMESTAMP")
+	@Column(name = "CREATED_TS")
 	private Date createTs;
 
-	@Column(name = "UPDATED_TIMESTAMP")
+	@Column(name = "UPDATED_TS")
 	private Date updatedTs;
 	
 	@Transient

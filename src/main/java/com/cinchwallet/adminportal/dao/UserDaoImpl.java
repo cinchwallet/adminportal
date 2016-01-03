@@ -35,7 +35,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	}
 
 	@Override
-	public UserLogin getByTypeAndId(UserType userType, Long entityId) {
+	public UserLogin getByTypeAndId(UserType userType, Integer entityId) {
 		Criteria criteria = getSession().createCriteria(UserLogin.class);
 		criteria.add(Restrictions.eq("userType", userType.getUserTypeCode()));
 		criteria.add(Restrictions.eq("parentId", entityId));

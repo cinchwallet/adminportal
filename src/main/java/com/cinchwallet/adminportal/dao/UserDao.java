@@ -11,7 +11,7 @@ public interface UserDao extends GenericDao<Serializable, User>{
 	
 	public UserLogin loadUserByUsername(String username);
 	
-	public UserLogin getByTypeAndId(UserType userType, Long entityId);
+	public UserLogin getByTypeAndId(UserType userType, Integer entityId);
 	
 	public void save(UserLogin userLogin);
 }

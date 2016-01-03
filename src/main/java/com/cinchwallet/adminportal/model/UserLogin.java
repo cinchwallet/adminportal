@@ -4,13 +4,10 @@ package com.cinchwallet.adminportal.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -22,6 +19,8 @@ public class UserLogin implements Serializable {
 
 	public UserLogin() {
 		this.status = true;
+		this.createTs = new Date();
+		this.updatedTs = new Date();
 	}
 
 	public UserLogin(String userName, String password) {
@@ -51,7 +50,7 @@ public class UserLogin implements Serializable {
 	private Boolean status;
 
 	@Column(name = "PARENT_ID")
-	private Long parentId;
+	private Integer parentId;
 
 	/*	
 	
@@ -66,10 +65,10 @@ public class UserLogin implements Serializable {
 	@Transient
 	private Integer access;
 
-	@Column(name = "CREATED_TIMESTAMP")
+	@Column(name = "CREATED_TS")
 	private Date createTs;
 
-	@Column(name = "UPDATED_TIMESTAMP")
+	@Column(name = "UPDATED_TS")
 	private Date updatedTs;
 
 	public Date getCreateTs() {
@@ -136,11 +135,11 @@ public class UserLogin implements Serializable {
 		this.userType = userType;
 	}
 
-	public Long getParentId() {
+	public Integer getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(Long parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
 

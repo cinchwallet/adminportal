@@ -94,7 +94,7 @@ public class MerchantServiceImpl implements MerchantService {
 	@Override
 	public Store getStoreById(int id) {
 		Store store = storeDao.getByKey(id);
-		UserLogin userLogin = userDao.getByTypeAndId(AppConstant.UserType.STORE_USER, store.getUid().longValue());
+		UserLogin userLogin = userDao.getByTypeAndId(AppConstant.UserType.STORE_USER, store.getUid());
 		store.setUserName(userLogin.getUserName());
 		return store;
 	}
@@ -110,7 +110,7 @@ public class MerchantServiceImpl implements MerchantService {
 			login.setUserName(store.getUserName());
 			login.setPassword(Util.getMD5(store.getPassword()));
 			login.setUserType(AppConstant.UserType.STORE_USER.getUserTypeCode());
-			login.setParentId(storeId.longValue());
+			login.setParentId(storeId);
 			login.setStatus(true);
 			userDao.save(login);
 		}else{

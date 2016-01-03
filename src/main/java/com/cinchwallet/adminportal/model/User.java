@@ -62,10 +62,10 @@ public class User implements Serializable{
     @Column(name = "STATUS")
     private Boolean status;
 
-    @Column(name = "CREATED_TIMESTAMP")
+    @Column(name = "CREATED_TS")
     private Date createTs;
 
-    @Column(name = "UPDATED_TIMESTAMP")
+    @Column(name = "UPDATED_TS")
     private Date updatedTs;
 
   	/*

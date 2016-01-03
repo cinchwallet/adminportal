@@ -30,10 +30,10 @@ public class TxnType implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "CREATED_TIMESTAMP")
+	@Column(name = "CREATED_TS")
 	private Date createTs;
 
-	@Column(name = "UPDATED_TIMESTAMP")
+	@Column(name = "UPDATED_TS")
 	private Date updatedTs;
 
 	public Integer getUid() {

@@ -47,11 +47,11 @@ public class PromoOffer implements Serializable{
     @Column(name = "END_DATE")
     private Date endDate;
 
-    @Column(name = "CREATED_TIMESTAMP")
-    private Date createTs;
+    @Column(name = "CREATED_TS")
+    private java.util.Date createTs;
 
-    @Column(name = "UPDATED_TIMESTAMP")
-    private Date updatedTs;
+    @Column(name = "UPDATED_TS")
+    private java.util.Date updatedTs;
 
 	public Integer getUid() {
 		return uid;
@@ -101,19 +101,19 @@ public class PromoOffer implements Serializable{
 		this.endDate = endDate;
 	}
 
-	public Date getCreateTs() {
+	public java.util.Date getCreateTs() {
 		return createTs;
 	}
 
-	public void setCreateTs(Date createTs) {
+	public void setCreateTs(java.util.Date createTs) {
 		this.createTs = createTs;
 	}
 
-	public Date getUpdatedTs() {
+	public java.util.Date getUpdatedTs() {
 		return updatedTs;
 	}
 
-	public void setUpdatedTs(Date updatedTs) {
+	public void setUpdatedTs(java.util.Date updatedTs) {
 		this.updatedTs = updatedTs;
 	}
 
