@@ -105,6 +105,24 @@
 		</tr>
 
 		<tr>
+		<th valign="top"><spring:message code="cardproduct.label.loyaltystatus"/></th>
+		<td>	
+		<form:select path="loyaltyType" class="styledselect_form_1">
+			<option value="SPEND">Spend</option>
+			<option value="TXN">Visit</option>
+		</form:select>
+		</td>
+		<td></td>
+		</tr> 
+
+		<tr>
+			<th valign="top"><spring:message code="cardproduct.label.pointpertxn"/></th>
+			<td><form:input path="pointsPerTxn" class="inp-form" /></td>
+			<td>
+			</td>
+		</tr>
+
+		<tr>
 			<th valign="top"><spring:message code="cardproduct.label.earnpoint.rule"/></th>
 			<td><form:input path="earnPointRule" class="inp-form" /></td>
 			<td>

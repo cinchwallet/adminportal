@@ -50,6 +50,12 @@ public class CardProduct implements Serializable {
 
 	@Column(name = "CARD_TYPE")
 	private String cardType;
+	
+	@Column(name = "LOYALTY_TYPE")
+	private String loyaltyType;
+	
+	@Column(name = "POINTS_PER_TXN")
+	private Integer pointsPerTxn;
 
 	@Column(name = "EARN_POINT_RULE")
 	private String earnPointRule;
@@ -209,6 +215,22 @@ public class CardProduct implements Serializable {
 
 	public void setBurnPointRule(String burnPointRule) {
 		this.burnPointRule = burnPointRule;
+	}
+
+	public String getLoyaltyType() {
+		return loyaltyType;
+	}
+
+	public void setLoyaltyType(String loyaltyType) {
+		this.loyaltyType = loyaltyType;
+	}
+
+	public Integer getPointsPerTxn() {
+		return pointsPerTxn;
+	}
+
+	public void setPointsPerTxn(Integer pointsPerTxn) {
+		this.pointsPerTxn = pointsPerTxn;
 	}
 
 	
